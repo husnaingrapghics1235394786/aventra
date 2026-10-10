@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Careers — Send us your CV | Tidewater Talent Co.</title>
+<meta name="description" content="Apply to Tidewater Talent Co. Share your details and CV and our recruiting team will match you with open roles in logistics, engineering, hospitality and healthcare.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0b2f3a; --ink-soft:#4b6670; --mist:#f1f5f6; --paper:#fff;
+  --teal:#1f6f78; --gold:#f2b632; --line:#d5dee0; --err:#b3261e; --ok:#17704a;
+  --r-card:18px; --r-field:10px;
+  --display:'Bricolage Grotesque',Georgia,serif; --body:'Figtree',system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:var(--body);color:var(--ink);background:var(--mist);line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:var(--teal)}
+:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.container{width:min(1140px,100% - 40px);margin-inline:auto}
+
+/* top bar */
+header{background:var(--paper);border-bottom:1px solid var(--line)}
+header .container{display:flex;align-items:center;justify-content:space-between;height:68px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink);font-family:var(--display);font-weight:800;font-size:1.2rem}
+.brand-mark{width:34px;height:34px;border-radius:9px;background:var(--ink);display:grid;place-items:center}
+.brand-mark svg{width:20px;height:20px;stroke:var(--gold);fill:none;stroke-width:2.2;stroke-linecap:round}
+header nav a{margin-left:22px;text-decoration:none;color:var(--ink-soft);font-weight:500}
+header nav a:hover,header nav a[aria-current]{color:var(--ink)}
+
+/* hero */
+.hero{background:var(--ink);color:#fff;padding:72px 0 120px;position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;inset:auto 0 0 0;height:56px;background:
+  radial-gradient(60px 24px at 30px 56px,var(--mist) 98%,transparent) 0 0/120px 56px repeat-x,
+  radial-gradient(60px 24px at 90px 56px,var(--mist) 98%,transparent) 0 0/120px 56px repeat-x;opacity:.0}
+.hero h1{font-family:var(--display);font-weight:800;font-size:clamp(2.2rem,5.4vw,4rem);line-height:1.04;letter-spacing:-.02em;margin:0 0 18px;max-width:17ch}
+.hero p{max-width:58ch;color:#c5d6db;font-size:1.08rem;margin:0}
+.hero .tide{position:absolute;right:-40px;bottom:0;width:min(520px,70%);opacity:.9;pointer-events:none}
+.crumb{font-size:.9rem;color:#9fb8bf;margin-bottom:22px}
+.crumb a{color:#9fb8bf}
+
+/* layout */
+main{margin-top:-64px;position:relative;z-index:2;padding-bottom:80px}
+.grid{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.9fr);gap:36px;align-items:start}
+.form-card{background:var(--paper);border:1px solid var(--line);border-radius:var(--r-card);padding:34px;box-shadow:0 18px 40px -24px rgba(11,47,58,.35)}
+.form-card h2{font-family:var(--display);font-size:1.9rem;margin:0 0 6px;letter-spacing:-.01em}
+.lead{color:var(--ink-soft);margin:0 0 26px;max-width:52ch}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.field{margin-bottom:16px}
+label{display:block;font-weight:600;font-size:.92rem;margin-bottom:6px}
+.req{color:var(--err)}
+.hint{font-weight:400;color:var(--ink-soft);margin-left:6px}
+input[type=text],input[type=email],input[type=tel],textarea{
+  width:100%;font:inherit;color:var(--ink);background:var(--mist);border:1.5px solid transparent;border-radius:var(--r-field);padding:12px 14px;transition:border-color .15s,background .15s}
+input:hover,textarea:hover{border-color:var(--line)}
+input:focus,textarea:focus{outline:none;background:#fff;border-color:var(--teal);box-shadow:0 0 0 3px rgba(31,111,120,.18)}
+textarea{min-height:120px;resize:vertical}
+.invalid{border-color:var(--err)!important;background:#fff6f5!important}
+.err-text{color:var(--err);font-size:.85rem;margin-top:5px;min-height:0}
+
+/* file drop */
+.file-drop{display:flex;align-items:center;gap:16px;padding:18px;border:2px dashed #b4c5c9;border-radius:var(--r-field);background:var(--mist);cursor:pointer;font-weight:400;margin:0;transition:border-color .15s,background .15s}
+.file-drop:hover,.file-drop.drag{border-color:var(--teal);background:#e7f0f1}
+.file-drop.has-file{border-style:solid;border-color:var(--ok);background:#eef7f2}
+.file-drop input{position:absolute;opacity:0;width:1px;height:1px}
+.file-drop:focus-within{outline:3px solid var(--gold);outline-offset:2px}
+.fd-ic{flex:none;width:46px;height:46px;border-radius:12px;background:var(--ink);display:grid;place-items:center}
+.fd-ic svg{width:22px;height:22px;stroke:var(--gold);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.fd-title{display:block;font-weight:600}
+.fd-sub{display:block;color:var(--ink-soft);font-size:.88rem;word-break:break-all}
+.fd-clear{margin-left:auto;border:0;background:none;color:var(--ink-soft);font:inherit;text-decoration:underline;cursor:pointer;display:none}
+.has-file .fd-clear{display:inline}
+
+/* honeypot */
+.hp{position:absolute!important;left:-9999px;width:1px;height:1px;overflow:hidden}
+
+/* submit */
+.submit{display:inline-flex;align-items:center;gap:12px;border:0;cursor:pointer;font:inherit;font-weight:700;color:var(--ink);background:var(--gold);padding:14px 14px 14px 26px;border-radius:999px;transition:transform .15s,box-shadow .15s}
+.submit .ic{width:34px;height:34px;border-radius:50%;background:var(--ink);display:grid;place-items:center}
+.submit .ic svg{width:16px;height:16px;stroke:#fff;fill:none;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.submit:hover{transform:translateY(-1px);box-shadow:0 10px 20px -10px rgba(242,182,50,.9)}
+.submit[disabled]{opacity:.65;cursor:progress;transform:none;box-shadow:none}
+.spin{width:16px;height:16px;border:2.5px solid rgba(255,255,255,.35);border-top-color:#fff;border-radius:50%;animation:sp .7s linear infinite;display:none}
+.submit.busy .spin{display:block}.submit.busy .ic svg{display:none}
+@keyframes sp{to{transform:rotate(360deg)}}
+
+.status{margin-top:18px;padding:0;border-radius:var(--r-field);font-weight:500;display:none}
+.status.show{display:block;padding:14px 16px}
+.status.ok{background:#e6f4ec;color:var(--ok)}
+.status.bad{background:#fdecea;color:var(--err)}
+.note{margin:18px 0 0;font-size:.85rem;color:var(--ink-soft)}
+
+/* side column */
+.side h3{font-family:var(--display);font-size:1.35rem;margin:6px 0 16px}
+.why{display:grid;gap:18px;margin-bottom:26px}
+.why-item{display:grid;grid-template-columns:44px 1fr;gap:14px}
+.why-item .ic{width:44px;height:44px;border-radius:12px;background:var(--paper);border:1px solid var(--line);display:grid;place-items:center}
+.why-item svg{width:22px;height:22px;stroke:var(--teal);fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.why-item b{display:block}
+.why-item span{color:var(--ink-soft);font-size:.95rem}
+.contact{display:grid;gap:12px}
+.contact a,.contact div{display:grid;grid-template-columns:44px 1fr;gap:14px;align-items:center;background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:14px 16px;text-decoration:none;color:var(--ink)}
+.contact a:hover{border-color:var(--teal)}
+.contact .ic{width:44px;height:44px;border-radius:12px;background:var(--mist);display:grid;place-items:center}
+.contact svg{width:22px;height:22px;stroke:var(--teal);fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.contact small{display:block;color:var(--ink-soft)}
+
+footer{background:var(--ink);color:#b6cad0;padding:36px 0;font-size:.92rem}
+footer .container{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-between}
+footer a{color:#b6cad0}
+
+@media (max-width:900px){.grid{grid-template-columns:1fr}.hero .tide{opacity:.35}}
+@media (max-width:560px){.row{grid-template-columns:1fr;gap:0}.form-card{padding:24px 20px}header nav a:not(:last-child){display:none}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <a class="brand" href="#">
+      <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 15c3 0 3-3 6-3s3 3 6 3 3-3 6-3M3 20c3 0 3-3 6-3s3 3 6 3 3-3 6-3M12 3v6"/></svg></span>
+      Tidewater Talent
+    </a>
+    <nav aria-label="Main">
+      <a href="#">Home</a>
+      <a href="#">Employers</a>
+      <a href="#" aria-current="page">Careers</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <div class="crumb"><a href="#">Home</a> / Careers</div>
+    <h1>Send us your CV and let the right role find you.</h1>
+    <p>We place engineers, drivers, nurses, chefs and site crews with employers across the Gulf and Europe. Share your details below and a recruiter will review your CV against our open roles.</p>
+  </div>
+  <svg class="tide" viewBox="0 0 520 160" aria-hidden="true" fill="none" stroke="#f2b632" stroke-width="2" stroke-linecap="round">
+    <path d="M0 40c40 0 40-20 80-20s40 20 80 20 40-20 80-20 40 20 80 20 40-20 80-20 40 20 80 20" opacity=".9"/>
+    <path d="M0 80c40 0 40-20 80-20s40 20 80 20 40-20 80-20 40 20 80 20 40-20 80-20 40 20 80 20" opacity=".55"/>
+    <path d="M0 120c40 0 40-20 80-20s40 20 80 20 40-20 80-20 40 20 80 20 40-20 80-20 40 20 80 20" opacity=".3"/>
+  </svg>
+</section>
+
+<main>
+  <div class="container grid">
+
+    <!-- FORM -->
+    <div class="form-card">
+      <h2>Apply with your CV</h2>
+      <p class="lead">Fill in your details and attach your CV (PDF or Word, up to 5&nbsp;MB). Prefer email? Write to <a href="mailto:careers@tidewatertalent.example?subject=Job%20Application">careers@tidewatertalent.example</a>.</p>
+
+      <form id="applyForm" novalidate>
+        <div class="row">
+          <div class="field">
+            <label for="a-name">Full name <span class="req">*</span></label>
+            <input id="a-name" name="name" type="text" placeholder="Your full name" autocomplete="name" required maxlength="120">
+            <div class="err-text" data-err="name"></div>
+          </div>
+          <div class="field">
+            <label for="a-email">Email <span class="req">*</span></label>
+            <input id="a-email" name="email" type="email" placeholder="you@example.com" autocomplete="email" required maxlength="190">
+            <div class="err-text" data-err="email"></div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="field">
+            <label for="a-phone">Phone / WhatsApp</label>
+            <input id="a-phone" name="phone" type="tel" placeholder="+44 7700 900123" autocomplete="tel" maxlength="40">
+          </div>
+          <div class="field">
+            <label for="a-position">Role or trade</label>
+            <input id="a-position" name="position" type="text" placeholder="e.g. Electrician, Forklift Driver, Chef" maxlength="120">
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="field">
+            <label for="a-experience">Years of experience</label>
+            <input id="a-experience" name="experience" type="text" placeholder="e.g. 6 years" maxlength="60">
+          </div>
+          <div class="field">
+            <label for="a-country">Preferred location</label>
+            <input id="a-country" name="country" type="text" placeholder="e.g. Qatar, Germany, Oman" maxlength="120">
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="a-message">Cover note</label>
+          <textarea id="a-message" name="message" placeholder="Tell us about your skills, certifications and when you can start…" maxlength="4000"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="a-cv">Attach CV <span class="req">*</span><span class="hint">PDF, DOC or DOCX, max 5&nbsp;MB</span></label>
+          <label class="file-drop" id="cvDrop" for="a-cv">
+            <input id="a-cv" name="cv" type="file" accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document" required>
+            <span class="fd-ic"><svg viewBox="0 0 24 24"><path d="M12 15V3m0 0L8 7m4-4 4 4M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg></span>
+            <span>
+              <span class="fd-title" id="cvTitle">Click to upload or drag your CV here</span>
+              <span class="fd-sub" id="cvSub">No file selected</span>
+            </span>
+            <button type="button" class="fd-clear" id="cvClear">Remove</button>
+          </label>
+          <div class="err-text" data-err="cv"></div>
+        </div>
+
+        <!-- honeypot: real people never see or fill this -->
+        <div class="hp" aria-hidden="true">
+          <label for="a-website">Website</label>
+          <input id="a-website" name="website" type="text" tabindex="-1" autocomplete="off">
+        </div>
+
+        <button type="submit" class="submit" id="applySubmit">
+          <span class="label">Send application</span>
+          <span class="ic"><span class="spin"></span><svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+        </button>
+
+        <div class="status" id="applyStatus" role="status" aria-live="polite"></div>
+        <p class="note">Sending a CV doesn’t guarantee selection or employment. Please keep your details accurate and up to date. We never sell or share your data.</p>
+      </form>
+    </div>
+
+    <!-- SIDE INFO -->
+    <aside class="side">
+      <h3>Why apply through Tidewater</h3>
+      <div class="why">
+        <div class="why-item">
+          <div class="ic"><svg viewBox="0 0 24 24"><path d="M12 2l8 4v5c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6z"/></svg></div>
+          <div><b>Licensed and audited agency</b><span>We are a registered recruitment agency and publish every employer contract terms to candidates before they sign.</span></div>
+        </div>
+        <div class="why-item">
+          <div class="ic"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM23 21v-2a4 4 0 0 0-3-3.9M16 3.1a4 4 0 0 1 0 7.8"/></svg></div>
+          <div><b>Roles in more than a dozen fields</b><span>Logistics, construction, engineering, oil and gas, healthcare, hospitality, retail and facilities management.</span></div>
+        </div>
+        <div class="why-item">
+          <div class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+          <div><b>A real person reads your CV</b><span>A recruiter reviews each application and replies within seven working days if your profile fits an open role.</span></div>
+        </div>
+      </div>
+
+      <div class="contact">
+        <a href="mailto:careers@tidewatertalent.example?subject=Job%20Application">
+          <span class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span>
+          <span><small>Email your CV</small>careers@tidewatertalent.example</span>
+        </a>
+        <a href="https://wa.me/971505550142" target="_blank" rel="noopener">
+          <span class="ic"><svg viewBox="0 0 24 24"><path d="M21 12a9 9 0 0 1-13.4 7.8L3 21l1.3-4.4A9 9 0 1 1 21 12z"/></svg></span>
+          <span><small>WhatsApp us</small>+971 50 555 0142</span>
+        </a>
+        <div>
+          <span class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
+          <span><small>Office hours</small>Mon to Fri, 9:00 to 18:00 (GMT+4)</span>
+        </div>
+      </div>
+    </aside>
+
+  </div>
+</main>
+
+<footer>
+  <div class="container">
+    <span>© 2026 Tidewater Talent Co. · Harbour Point Tower, Level 14, Dubai Marina, UAE</span>
+    <span><a href="mailto:careers@tidewatertalent.example">careers@tidewatertalent.example</a> · +971 4 555 0188</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  /* path to the PHP handler, relative to this page */
+  var ENDPOINT = 'api/apply.php';
+  var MAX = 5 * 1024 * 1024;
+  var OK_EXT = ['pdf','doc','docx'];
+
+  var form = document.getElementById('applyForm');
+  var btn = document.getElementById('applySubmit');
+  var statusEl = document.getElementById('applyStatus');
+  var fileInput = document.getElementById('a-cv');
+  var drop = document.getElementById('cvDrop');
+  var cvTitle = document.getElementById('cvTitle');
+  var cvSub = document.getElementById('cvSub');
+  var clearBtn = document.getElementById('cvClear');
+
+  function setErr(key, msg){
+    var el = form.querySelector('[data-err="'+key+'"]');
+    if(el) el.textContent = msg || '';
+    var target = key === 'cv' ? drop : form.elements[key];
+    if(target) target.classList.toggle('invalid', !!msg);
+  }
+  function showStatus(type, msg){
+    statusEl.className = 'status show ' + type;
+    statusEl.textContent = msg;
+  }
+  function fmt(b){ return b > 1048576 ? (b/1048576).toFixed(1)+' MB' : Math.max(1,Math.round(b/1024))+' KB'; }
+
+  function checkFile(f){
+    if(!f) return 'Please attach your CV.';
+    var ext = (f.name.split('.').pop() || '').toLowerCase();
+    if(OK_EXT.indexOf(ext) === -1) return 'CV must be a PDF, DOC or DOCX file.';
+    if(f.size > MAX) return 'CV is too large ('+fmt(f.size)+'). Maximum is 5 MB.';
+    return '';
+  }
+  function resetFile(){
+    fileInput.value = '';
+    drop.classList.remove('has-file');
+    cvTitle.textContent = 'Click to upload or drag your CV here';
+    cvSub.textContent = 'No file selected';
+  }
+  function refreshFile(){
+    var f = fileInput.files[0];
+    if(!f){ resetFile(); return; }
+    var err = checkFile(f);
+    setErr('cv', err);
+    if(err){ resetFile(); setErr('cv', err); return; }
+    drop.classList.add('has-file');
+    cvTitle.textContent = 'CV attached';
+    cvSub.textContent = f.name + ' · ' + fmt(f.size);
+  }
+
+  fileInput.addEventListener('change', refreshFile);
+  clearBtn.addEventListener('click', function(e){ e.preventDefault(); resetFile(); setErr('cv',''); });
+  ['dragenter','dragover'].forEach(function(t){
+    drop.addEventListener(t, function(e){ e.preventDefault(); drop.classList.add('drag'); });
+  });
+  ['dragleave','drop'].forEach(function(t){
+    drop.addEventListener(t, function(e){ e.preventDefault(); drop.classList.remove('drag'); });
+  });
+  drop.addEventListener('drop', function(e){
+    if(e.dataTransfer && e.dataTransfer.files.length){
+      try { fileInput.files = e.dataTransfer.files; } catch(_) {}
+      refreshFile();
+    }
+  });
+  ['name','email'].forEach(function(n){
+    form.elements[n].addEventListener('input', function(){ setErr(n,''); });
+  });
+
+  function validate(){
+    var ok = true;
+    var name = form.elements.name.value.trim();
+    var email = form.elements.email.value.trim();
+    setErr('name', name ? '' : 'Please enter your full name.'); if(!name) ok = false;
+    var emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email);
+    setErr('email', emailOk ? '' : 'Please enter a valid email address.'); if(!emailOk) ok = false;
+    var fErr = checkFile(fileInput.files[0]);
+    setErr('cv', fErr); if(fErr) ok = false;
+    return ok;
+  }
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    statusEl.className = 'status';
+    if(!validate()){
+      showStatus('bad','Please fix the highlighted fields and try again.');
+      return;
+    }
+    btn.disabled = true; btn.classList.add('busy');
+    btn.querySelector('.label').textContent = 'Sending…';
+
+    fetch(ENDPOINT, { method:'POST', body:new FormData(form) })
+      .then(function(r){
+        return r.text().then(function(t){
+          var j; try { j = JSON.parse(t); } catch(_) { j = null; }
+          if(!j) throw new Error('The server returned an unexpected response. Check that api/apply.php is uploaded and PHP is enabled.');
+          return j;
+        });
+      })
+      .then(function(j){
+        if(j.ok){
+          showStatus('ok', j.message || 'Application sent!');
+          form.reset(); resetFile();
+        } else {
+          showStatus('bad', j.error || 'Something went wrong. Please try again.');
+        }
+      })
+      .catch(function(err){
+        showStatus('bad', err.message || 'Network error. Please check your connection and try again.');
+      })
+      .finally(function(){
+        btn.disabled = false; btn.classList.remove('busy');
+        btn.querySelector('.label').textContent = 'Send application';
+      });
+  });
+})();
+</script>
+</body>
+</html>
